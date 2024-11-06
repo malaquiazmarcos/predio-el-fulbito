@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} El Fulbito {% endblock %}</title>
+</head>
+<body>
+    {% block header %}
+    {% endblock %}
+
+    {% block content %}
+        <h1>Predio el Fulbito</h1>
+        <h2>Reserva turnos para nuestras canchas</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero, odio tempora officiis maxime alias minus labore, voluptatem quam eveniet libero temporibus eum aut. Soluta corrupti sed repellat provident necessitatibus excepturi.</p>
+        <a href="{% url 'futbol_view' %}">Fútbol</a>
+        <a href="{% url 'paddel_view' %}">Paddel</a>
+    {% endblock %}
+
+    {% block footer %}
+        <p>Footer de esta página</p>
+    {% endblock %}
+</body>
+</html>
