@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} Registrarse {% endblock %}
+
+{% block content %} 
+    <h1>Registrarse</h1>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form action="{% url 'registro_usuario_view' %}" method="post">
+        {% csrf_token %} 
+        <label for="first_name">Nombre</label>
+        <input type="text" name="first_name" id="first_name" required>
+
+        <label for="last_name">Apellido</label>
+        <input type="text" name="last_name" id="last_name" required>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="passwrd">Contraseña</label>
+        <input type="password" name="passwrd" id="passwrd" required>
+
+        <label for="confirm_passwrd">Confirmar contraseña</label>
+        <input type="password" name="confirm_passwrd" id="confirm_passwrd" required>
+
+        <button type="submit">Registrarse</button>
+    </form>
+{% endblock %}

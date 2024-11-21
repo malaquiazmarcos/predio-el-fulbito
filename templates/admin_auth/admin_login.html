@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Acceso Administrativo {% endblock %}
+
+{% block content %} 
+    <h1>Iniciar sesión</h1>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form action="{% url 'verifica_admin_view' %}" method="post">
+        {% csrf_token %} 
+        <label for="usuario">Email</label>
+        <input type="text" name="usuario" id="usuario">
+
+        <label for="passwrd">Contraseña</label>
+        <input type="password" name="passwrd" id="passwrd">
+
+        <button type="submit">Iniciar sesión</button>
+    </form>
+
+    <h3>¿No tienes una cuetna? <a href="{% url 'registro_usuario_view' %}">Registrate</a></h3>
+
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from myapp.models import Canchas, DatosPersona, Horario
 from myapp.utils.date_utils import siete_dias
+from django.contrib.auth.decorators import login_required
 import ast
 
 def index(request):
@@ -45,6 +46,7 @@ def horarios_view(request, id):
         'horarios_reservados' : horarios_reservados
     })
 
+@login_required
 def confirmar_reserva_view(request, id):
     horario_seleccionado = request.POST.getlist('horario')
     fecha_seleccionada = request.POST.get('fecha')
@@ -56,6 +58,7 @@ def confirmar_reserva_view(request, id):
         'id' : id
     })
 
+@login_required
 def confirmar_reserva_2_view(request, id):
     cancha_instancia = Canchas.objects.get(id=id)
     
@@ -95,4 +98,3 @@ def confirmar_reserva_2_view(request, id):
                 print(f'ERROR: {e}')
 
         return redirect('index')
-

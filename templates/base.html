@@ -9,6 +9,14 @@
     {% block header %}
     {% endblock %}
 
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
     {% block content %}
         <h1>Predio el Fulbito</h1>
         <h2>Reserva turnos para nuestras canchas</h2>
@@ -18,7 +26,12 @@
     {% endblock %}
 
     {% block footer %}
-        <p>Footer de esta página</p>
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'admin_logout' %}">Cerrar sesión</a>
+        {% else %}
+            <a href="{% url 'admin_login_view' %}">Iniciar sesión</a>
+            <a href="{% url 'registro_usuario_view' %}">Registrarse</a>
+        {% endif %}
     {% endblock %}
 </body>
 </html>

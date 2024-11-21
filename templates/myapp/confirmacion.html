@@ -10,13 +10,13 @@
         {% csrf_token %}
 
         <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre">
+        <input type="text" id="nombre" name="nombre" required>
         <label for="apellido">Apellido</label>
-        <input type="text" id="apellido" name="apellido">
+        <input type="text" id="apellido" name="apellido" required>
         <label for="telefono">Teléfono</label>
-        <input type="text" id="telefono" name="telefono">
+        <input type="text" id="telefono" name="telefono" required>
         <label for="email">Email</label>
-        <input type="text" id="email" name="email">
+        <input type="text" id="email" name="email" required>
 
         <input type="text" hidden name="reserva" value="{{ reserva }}">
         <input type="text" hidden name="horario_id" value="{{ horario_id }}">
