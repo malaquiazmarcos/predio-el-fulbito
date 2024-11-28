@@ -28,7 +28,6 @@ def paddel_view(request):
         'canchas' : canchas
     })
 
-
 def horarios_view(request, id):
     lista_horarios = [
         '17:00-18:00',
@@ -55,7 +54,7 @@ def horarios_view(request, id):
         'horarios_reservados' : horarios_reservados
     })
 
-@login_required
+@login_required(login_url='admin_login_view')
 def confirmar_reserva_view(request, id):
     horario_seleccionado = request.POST.getlist('horario')
     if not horario_seleccionado:
@@ -102,7 +101,7 @@ def confirmar_reserva_view(request, id):
             'telefono' : telefono,
         })
 
-@login_required
+@login_required(login_url='admin_login_view')
 def confirmar_reserva_2_view(request, id):
     cancha_instancia = Canchas.objects.get(id=id)
     user_id = request.user.id
@@ -132,6 +131,13 @@ def confirmar_reserva_2_view(request, id):
                 horario_id = reserva.id
 
                 horario_instancia = Horario.objects.get(id=horario_id)
+
+                datos_reserva = DatosReserva(
+                    cancha_id=cancha_instancia.id,
+                    horario_id=horario_instancia.id ,
+                    user_id=user_id
+                )
+                datos_reserva.save()
 
                 if actualiza_telefono:
                     actualiza_telefono.telefono = telefono
