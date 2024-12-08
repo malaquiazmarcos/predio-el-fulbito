@@ -27,8 +27,3 @@ def cancelar_reserva_view(request):
     instancia_horario.delete()
 
     return redirect(request.META.get('HTTP_REFERER', 'reservas_view'))
-
-def admin_reservas_view(request):
-
-    pass
-

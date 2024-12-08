@@ -71,6 +71,14 @@ TEMPLATES = [
     },
 ]
 
+# URL base para los archivos estáticos
+STATIC_URL = '/static/'
+
+# Directorio principal de archivos estáticos en desarrollo
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',  # Define la carpeta 'static' en la raíz
+]
+
 WSGI_APPLICATION = 'test_django_1.wsgi.application'
 
 # Database
