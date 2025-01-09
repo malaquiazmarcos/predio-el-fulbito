@@ -3,7 +3,7 @@
 {% block title %}Confirmación{% endblock %}
 
 {% block content %}
-    <h1>Confirmación de la reserva</h1>
+    <!-- <h1>Confirmación de la reserva</h1>
     <h2>Por favor completa los siguientes datos para que confirmemos tu reserva</h2>
 
     <form action="{% url 'confirmar_reserva_2_view' id=id %}" method="post">
@@ -26,5 +26,69 @@
         <input type="text" hidden name="reserva" value="{{ reserva }}">
         <input type="text" hidden name="horario_id" value="{{ horario_id }}">
         <button type="submit">Enviar</button>
-    </form>
+    </form> -->
+
+
+
+
+
+
+
+
+
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="fw-bold display-4">Confirmación de la Reserva</h1>
+                <h2 class="text-secondary">Por favor completa los siguientes datos para que confirmemos tu reserva</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card shadow-sm custom-card">
+                        <div class="card-body py-4 px-5">
+                            <form action="{% url 'confirmar_reserva_2_view' id=id %}" method="post">
+                                {% csrf_token %}
+                                <!-- Nombre -->
+                                <div class="mb-4">
+                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <input type="text" id="nombre" name="nombre" class="form-control" 
+                                        value="{{ datos_usuario.first_name }}" required>
+                                </div>
+                                <!-- Apellido -->
+                                <div class="mb-4">
+                                    <label for="apellido" class="form-label">Apellido</label>
+                                    <input type="text" id="apellido" name="apellido" class="form-control" 
+                                        value="{{ datos_usuario.last_name }}" required>
+                                </div>
+                                <!-- Teléfono -->
+                                <div class="mb-4">
+                                    <label for="telefono" class="form-label">Teléfono</label>
+                                    <input type="text" id="telefono" name="telefono" class="form-control" required
+                                        {% if telefono %}
+                                            value="{{ telefono }}"
+                                        {% else %}
+                                            value=""
+                                        {% endif %}>
+                                </div>
+                                <!-- Email -->
+                                <div class="mb-4">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="text" id="email" name="email" class="form-control" 
+                                        value="{{ datos_usuario.email }}" required>
+                                </div>
+                                <!-- Campos ocultos -->
+                                <input type="hidden" name="reserva" value="{{ reserva }}">
+                                <input type="hidden" name="horario_id" value="{{ horario_id }}">
+                                <!-- Botón enviar -->
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 {% endblock %}

@@ -3,7 +3,7 @@
 {% block title %}Horarios de Fútbol{% endblock %}
 
 {% block content %}
-    <h1>Horarios de la Cancha {{ id }}</h1>
+    <!-- <h1>Horarios de la Cancha {{ id }}</h1>
     <h2>Dia {{ fecha_seleccionada }}</h2>
     <form action="{% url 'confirmar_reserva_view' id=id %}" method="post">
         {% csrf_token %}
@@ -22,5 +22,56 @@
         {% endfor %}
         <input type="text" hidden id="fecha" name="fecha" value="{{ fecha_seleccionada }}">
         <button type="submit">Siguiente</button>
-    </form>
+    </form> -->
+
+
+
+
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="fw-bold display-4">Horarios de la Cancha {{ id }}</h1>
+                <h2 class="text-secondary">Día {{ fecha_seleccionada }}</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-sm custom-card">
+                        <div class="card-body py-4 px-5">
+                            <form action="{% url 'confirmar_reserva_view' id=id %}" method="post">
+                                {% csrf_token %}
+                                <!-- Lista de horarios -->
+                                <div class="mb-4">
+                                    <h3 class="mb-3">Selecciona uno o más horarios disponibles:</h3>
+                                    <ul class="list-group">
+                                        {% for horario in lista_horarios %}
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <label class="form-check-label" for="horario_{{ loop.index }}">
+                                                    <input type="checkbox" class="form-check-input me-2" name="horario" 
+                                                        id="horario_{{ loop.index }}" value="{{ horario }}"
+                                                        {% for reserva in horarios_reservados %}
+                                                            {% if horario in reserva %} disabled {% endif %}
+                                                        {% endfor %}>
+                                                    {{ horario }}
+                                                </label>
+                                                {% if horario in horarios_reservados %}
+                                                    <span class="badge bg-danger">Reservado</span>
+                                                {% endif %}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <!-- Campo oculto -->
+                                <input type="hidden" id="fecha" name="fecha" value="{{ fecha_seleccionada }}">
+                                <!-- Botón enviar -->
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-block">Siguiente</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 {% endblock %}

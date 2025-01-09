@@ -3,7 +3,7 @@
 {% block title %}Paddel{% endblock %}
 
 {% block content %}
-    <h2>Cancha 3</h2>
+    <!-- <h2>Cancha 3</h2>
     <h3>Dias y Horarios disponibles:</h3>
     <ul>
         <li>
@@ -24,5 +24,42 @@
                 {% endif %}
             {% endfor %}
         </li>
-    </ul>
+    </ul> -->
+
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="fw-bold mb-4">Cancha 3</h2>
+                    <h3 class="text-secondary mb-4">Días y Horarios disponibles</h3>
+                    <div class="card shadow-sm custom-card">
+                        <div class="card-body py-4 px-5">
+                            {% for cancha in canchas %}
+                                {% if cancha.nombre == 'Cancha 3' %}
+                                    <form action="{% url 'horarios_view' cancha.id %}" method="post">
+                                        {% csrf_token %}
+                                        <!-- Selector de fechas -->
+                                        <div class="mb-4">
+                                            <label for="fecha" class="form-label">Selecciona una fecha:</label>
+                                            <select name="fecha" id="fecha" class="form-select">
+                                                {% for dia in lista_dias %}
+                                                    <option value="{{ dia }}">{{ dia }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <!-- Botón -->
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary btn-block">Siguiente</button>
+                                        </div>
+                                    </form>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 {% endblock %}

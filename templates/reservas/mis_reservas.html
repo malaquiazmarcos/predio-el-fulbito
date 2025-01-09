@@ -3,7 +3,7 @@
 {% block title %}Mis reservas{% endblock %}
 
 {% block content %}
-    <h1>Mis reservas</h1>
+    <!-- <h1>Mis reservas</h1>
 
     {% if user.is_staff or user.is_superuser %}
         {% for reservas in reservas_instancia_admin %}
@@ -39,7 +39,62 @@
                 <button>Cancelar reserva</button>
             </form>
         {% endfor %}
-    {% endif %}
+    {% endif %} -->
+
+
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h1 class="fw-bold mb-4 text-center">Mis reservas</h1>
+                    {% if user.is_staff or user.is_superuser %}
+                        {% for reservas in reservas_instancia_admin %}
+                            <div class="card shadow-sm custom-card mb-4">
+                                <div class="card-body">
+                                    <ul class="list-unstyled mb-4">
+                                        <li><strong>Día:</strong> {{ reservas.horario.fecha }}</li>
+                                        <li><strong>Horario:</strong> {{ reservas.horario.horarios }}</li>
+                                        <li><strong>Nombre:</strong> {{ reservas.user.first_name }} {{ reservas.user.last_name }}</li>
+                                        <li><strong>Email:</strong> {{ reservas.user.email }}</li>
+                                        <li>
+                                            {% for telefono in telefono_instancia %}
+                                                {% if telefono.user.email == reservas.user.email %}
+                                                    <strong>Teléfono:</strong> {{ telefono.telefono }}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </li>
+                                    </ul>
+                                    <form action="{% url 'cancelar_reserva_view' %}" method="post">
+                                        {% csrf_token %}
+                                        <input type="text" value="{{ reservas.horario.id }}" name="horario_id" hidden>
+                                        <button type="submit" class="btn btn-danger btn-sm">Cancelar reserva</button>
+                                    </form>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {% for reserva in reserva_instancia %}
+                            <div class="card shadow-sm custom-card mb-4">
+                                <div class="card-body">
+                                    <ul class="list-unstyled mb-4">
+                                        <li><strong>Día:</strong> {{ reserva.horario.fecha }}</li>
+                                        <li><strong>Horario:</strong> {{ reserva.horario.horarios }}</li>
+                                    </ul>
+                                    <form action="{% url 'cancelar_reserva_view' %}" method="post">
+                                        {% csrf_token %}
+                                        <input type="text" value="{{ reserva.horario.id }}" name="horario_id" hidden>
+                                        <button type="submit" class="btn btn-danger btn-sm">Cancelar reserva</button>
+                                    </form>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    
     
 
 {% endblock %}

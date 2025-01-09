@@ -3,7 +3,7 @@
 {% block title %}Fútbol{% endblock %}
 
 {% block content %}
-    <h1>Nuestras canchas</h1>
+    <!-- <h1>Nuestras canchas</h1>
     <ul>
         <li>
             <h2>Cancha 1</h2>
@@ -41,5 +41,73 @@
                 {% endif %}
             {% endfor %}
         </li>
-    </ul>
+    </ul> -->
+
+
+
+
+
+
+
+
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="fw-bold display-4">Nuestras Canchas</h1>
+            </div>
+            <div class="row">
+                <!-- Cancha 1 -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-sm custom-card">
+                        <div class="card-body">
+                            <h2 class="fw-bold">Cancha 1</h2>
+                            <h3 class="text-secondary mb-4">Días y Horarios Disponibles:</h3>
+                            {% for cancha in canchas %}
+                                {% if cancha.nombre == 'Cancha 1' %}
+                                    <form action="{% url 'horarios_view' cancha.id %}" method="post" class="mb-3">
+                                        {% csrf_token %}
+                                        <div class="mb-3">
+                                            <label for="fecha" class="form-label">Selecciona una fecha</label>
+                                            <select name="fecha" id="fecha" class="form-select">
+                                                {% for dia in lista_dias %}
+                                                    <option value="{{ dia }}">{{ dia }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-block">Siguiente</button>
+                                    </form>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <!-- Cancha 2 -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-sm custom-card">
+                        <div class="card-body">
+                            <h2 class="fw-bold">Cancha 2</h2>
+                            <h3 class="text-secondary mb-4">Días y Horarios Disponibles:</h3>
+                            {% for cancha in canchas %}
+                                {% if cancha.nombre == 'Cancha 2' %}
+                                    <form action="{% url 'horarios_view' cancha.id %}" method="post" class="mb-3">
+                                        {% csrf_token %}
+                                        <div class="mb-3">
+                                            <label for="fecha" class="form-label">Selecciona una fecha</label>
+                                            <select name="fecha" id="fecha" class="form-select">
+                                                {% for dia in lista_dias %}
+                                                    <option value="{{ dia }}">{{ dia }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-block">Siguiente</button>
+                                    </form>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 {% endblock %}

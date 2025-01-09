@@ -3,11 +3,10 @@
 {% block title %} Registrarse {% endblock %}
 
 {% block content %} 
-    <h1>Registrarse</h1>
     {% if error %}
         <p style="color: red;">{{ error }}</p>
     {% endif %}
-    <form action="{% url 'registro_usuario_view' %}" method="post">
+    <!-- <form action="{% url 'registro_usuario_view' %}" method="post">
         {% csrf_token %} 
         <label for="first_name">Nombre</label>
         <input type="text" name="first_name" id="first_name" required>
@@ -25,5 +24,82 @@
         <input type="password" name="confirm_passwrd" id="confirm_passwrd" required>
 
         <button type="submit">Registrarse</button>
-    </form>
+    </form> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="">
+        <div class="px-4 py-5 px-md-5 text-center text-lg-start">
+            <div class="container">
+                <div class="row gx-lg-5 align-items-center">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <h1 class="my-5 display-3 fw-bold ls-tight">
+                            ¡Registrate! <br />
+                            <span class="text-primary">¿Por qué lo pedimos?</span>
+                        </h1>
+                        <p style="color: hsl(217, 10%, 50.8%)">
+                            Al registrarte facilitaras la gestión de tus reservas, 
+                            permitiendo consultarlas o cancelarlas fácilmente, 
+                            y ayudarnos a llevar un control más eficiente del uso de las canchas.
+                        </p>
+                    </div>
+            
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <div class="card custom-card">
+                            <div class="card-body py-5 px-md-5">
+                                <form action="{% url 'registro_usuario_view' %}" method="post">
+                                    {% csrf_token %} 
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" name="first_name" id="first_name" required class="form-control" placeholder="Nombre"/>
+                                        </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" name="last_name" id="last_name" required class="form-control" placeholder="Apellido"/>
+                                        </div>
+                                        </div>
+                                    </div>
+                    
+                                    <div data-mdb-input-init class="form-outline mb-4">
+                                        <input type="email" name="email" id="email" required class="form-control" placeholder="Correo Electronico"/>
+                                    </div>
+                                    <div data-mdb-input-init class="form-outline mb-4">
+                                        <input type="password" name="passwrd" id="passwrd" required class="form-control" placeholder="Contraseña"/>
+                                    </div>
+                                    <div data-mdb-input-init class="form-outline mb-4">
+                                        <input type="password" name="confirm_passwrd" id="confirm_passwrd" required class="form-control"  placeholder="Confirmar Contraseña"/>
+                                    </div>
+                                    <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
+                                        Registrarse
+                                    </button>
+                                    <p>¿Ya tienes una cuenta? <a href="{% url 'admin_login_view' %}" class="links-acces">Inicia Sesión</a></p>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
