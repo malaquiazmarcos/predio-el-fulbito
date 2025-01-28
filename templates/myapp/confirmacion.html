@@ -3,38 +3,6 @@
 {% block title %}Confirmación{% endblock %}
 
 {% block content %}
-    <!-- <h1>Confirmación de la reserva</h1>
-    <h2>Por favor completa los siguientes datos para que confirmemos tu reserva</h2>
-
-    <form action="{% url 'confirmar_reserva_2_view' id=id %}" method="post">
-        {% csrf_token %}
-
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" value="{{ datos_usuario.first_name }}" required>
-        <label for="apellido">Apellido</label>
-        <input type="text" id="apellido" name="apellido" value="{{ datos_usuario.last_name }}" required>
-        <label for="telefono">Teléfono</label>
-        <input type="text" id="telefono" name="telefono" required
-        {% if telefono %}
-            value="{{ telefono }}"
-        {% else % }
-            value=""
-        {% endif %}>
-        <label for="email">Email</label>
-        <input type="text" id="email" name="email" value="{{ datos_usuario.email }}" required>
-
-        <input type="text" hidden name="reserva" value="{{ reserva }}">
-        <input type="text" hidden name="horario_id" value="{{ horario_id }}">
-        <button type="submit">Enviar</button>
-    </form> -->
-
-
-
-
-
-
-
-
 
     <section class="py-5">
         <div class="container">

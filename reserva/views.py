@@ -7,6 +7,9 @@ def reservas_view(request):
     user_instancia = request.user
     reserva_instancia = DatosReserva.objects.filter(user_id=user_instancia).select_related('horario')
 
+    reservas_instancia_admin = None
+    telefono_instancia = None
+
     if request.user.is_staff or request.user.is_superuser:
         reservas_instancia_admin = DatosReserva.objects.all()
         telefono_instancia = Telefono.objects.all()

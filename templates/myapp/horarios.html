@@ -3,29 +3,6 @@
 {% block title %}Horarios de Fútbol{% endblock %}
 
 {% block content %}
-    <!-- <h1>Horarios de la Cancha {{ id }}</h1>
-    <h2>Dia {{ fecha_seleccionada }}</h2>
-    <form action="{% url 'confirmar_reserva_view' id=id %}" method="post">
-        {% csrf_token %}
-        {% for horario in lista_horarios %}
-            <ul>
-                <li>
-                    <label for="">
-                        <input type="checkbox" name="horario" id="horario" value="{{ horario }}"
-                        {% for reserva in horarios_reservados %}
-                            {% if horario in reserva %} disabled {% endif %}
-                        {% endfor %}>
-                        {{ horario }}
-                    </label>
-                </li>
-            </ul>
-        {% endfor %}
-        <input type="text" hidden id="fecha" name="fecha" value="{{ fecha_seleccionada }}">
-        <button type="submit">Siguiente</button>
-    </form> -->
-
-
-
 
     <section class="py-5">
         <div class="container">

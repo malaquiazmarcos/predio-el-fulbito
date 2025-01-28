@@ -36,8 +36,6 @@ body {
     background-size: cover; 
     background-position: center;
     background-repeat: no-repeat; 
-    
-    /* height: 100vh; */
 }
 
 .sports-images {
@@ -71,6 +69,11 @@ body {
 .social-query {
     background-color: #272727;
     color: white;   
+}
+
+.link-social-query {
+    text-decoration: none;
+    color: white;
 }
 
 .footer-links {

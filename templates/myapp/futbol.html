@@ -3,52 +3,6 @@
 {% block title %}Fútbol{% endblock %}
 
 {% block content %}
-    <!-- <h1>Nuestras canchas</h1>
-    <ul>
-        <li>
-            <h2>Cancha 1</h2>
-            <h3>Dias y Horarios disponibles:</h3>
-            {% for cancha in canchas %}
-                {% if cancha.nombre == 'Cancha 1' %}
-                    <form action="{% url 'horarios_view' cancha.id %}" method="post">
-                        {% csrf_token %}
-                        <label for="fecha">Selecciona una fecha</label>
-                        <select name="fecha" id="fecha">
-                            {% for dia in lista_dias %}
-                                <option value="{{ dia }}">{{ dia }}</option>
-                            {% endfor %}
-                        </select>
-                        <button type="submit">Siguiente</button>
-                    </form>
-                {% endif %}
-            {% endfor %}
-        </li>
-        <li>
-            <h2>Cancha 2</h2>
-            <h3>Dias y Horarios disponibles:</h3>
-            {% for cancha in canchas %}
-                {% if cancha.nombre == 'Cancha 2' %}
-                    <form action="{% url 'horarios_view' cancha.id %}" method="post">
-                        {% csrf_token %}
-                        <label for="fecha">Selecciona una fecha</label>
-                        <select name="fecha" id="fecha">
-                            {% for dia in lista_dias %}
-                                <option value="{{ dia }}">{{ dia }}</option>
-                            {% endfor %}
-                        </select>
-                        <button type="submit">Siguiente</button>
-                    </form>
-                {% endif %}
-            {% endfor %}
-        </li>
-    </ul> -->
-
-
-
-
-
-
-
 
     <section class="py-5">
         <div class="container">

@@ -3,45 +3,6 @@
 {% block title %}Mis reservas{% endblock %}
 
 {% block content %}
-    <!-- <h1>Mis reservas</h1>
-
-    {% if user.is_staff or user.is_superuser %}
-        {% for reservas in reservas_instancia_admin %}
-            <form action="{% url 'cancelar_reserva_view' %}" method="post">
-                {% csrf_token %}
-                <ul>
-                    <li>Dia: {{ reservas.horario.fecha }}</li>
-                    <li>Horario: {{ reservas.horario.horarios }}</li>
-                    <li>Nombre: {{ reservas.user.first_name }} {{ reservas.user.last_name }}</li>
-                    <li>Email: {{ reservas.user.email }}</li>
-                    <li>
-                        {% for telefono in telefono_instancia %}
-                            {% if telefono.user.email == reservas.user.email %}
-                                Telefono: {{telefono.telefono}}
-                            {% endif %}
-                        {% endfor %}
-                    </li>
-
-                </ul>
-                <input type="text" value="{{ reservas.horario.id }}" name="horario_id" hidden>
-                <button>Cancelar reserva</button>
-            </form>
-        {% endfor %}
-    {% else %}
-        {% for reserva in reserva_instancia %}
-            <form action="{% url 'cancelar_reserva_view' %}" method="post">
-                {% csrf_token %}
-                    <ul>
-                        <li>Dia: {{ reserva.horario.fecha }}</li>
-                        <li>Horario: {{ reserva.horario.horarios }}</li>
-                    </ul>
-                    <input type="text" value="{{ reserva.horario.id }}" name="horario_id" hidden>
-                <button>Cancelar reserva</button>
-            </form>
-        {% endfor %}
-    {% endif %} -->
-
-
 
     <section class="py-5">
         <div class="container">
@@ -87,14 +48,12 @@
                                         <button type="submit" class="btn btn-danger btn-sm">Cancelar reserva</button>
                                     </form>
                                 </div>
-                            </div>
+                            </div> 
                         {% endfor %}
                     {% endif %}
                 </div>
             </div>
         </div>
     </section>
-    
-    
 
 {% endblock %}

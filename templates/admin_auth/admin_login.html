@@ -3,19 +3,6 @@
 {% block title %} Iniciar Sesión {% endblock %}
 
 {% block content %} 
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
-    <!-- <form action="{% url 'verifica_admin_view' %}" method="post">
-        {% csrf_token %} 
-        <label for="usuario">Email</label>
-        <input type="text" name="usuario" id="usuario">
-
-        <label for="passwrd">Contraseña</label>
-        <input type="password" name="passwrd" id="passwrd">
-
-        <button type="submit">Iniciar sesión</button>
-    </form> -->
 
     {% if error %}
         <p style="color: red;">{{ error }}</p>
@@ -30,12 +17,6 @@
                             ¡Inicia Sesión!<br />
                             <span class="text-primary">Para reservar de forma sencilla</span>
                         </h1>
-                        <!-- <p style="color: hsl(217, 10%, 50.8%)">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Eveniet, itaque accusantium odio, soluta, corrupti aliquam
-                            quibusdam tempora at cupiditate quis eum maiores libero
-                            veritatis? Dicta facilis sint aliquid ipsum atque?
-                        </p> -->
                     </div>
             
                     <div class="col-lg-6 mb-5 mb-lg-0">
@@ -64,6 +45,5 @@
             </div>
         </div>
     </section>
-
 
 {% endblock %}

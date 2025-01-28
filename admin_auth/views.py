@@ -58,8 +58,7 @@ def registro_usuario_view(request):
         nuevo_usuario.save()
 
         login(request, nuevo_usuario)
-        print('Se ha creado un nuevo usuario')
-        messages.success(request, 'Usuario registrado exitosamente.')
+        #messages.success(request, 'Usuario registrado exitosamente.')
         return redirect('index')
 
     return render(request, 'admin_auth/register.html')
