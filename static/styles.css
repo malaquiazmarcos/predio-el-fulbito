@@ -126,5 +126,11 @@ button {
     text-decoration: none;
 }
 
-
-
+@media (max-width: 474px) {
+    .navbar-text {
+        text-align: right;
+    }
+    .ocultar-linea {
+        display: none;
+    }
+}
